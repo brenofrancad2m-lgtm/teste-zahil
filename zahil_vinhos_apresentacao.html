@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahil Vinhos — Guia de Estilos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme:    #FAF7F5;
+    --borgonha: #AD0C27;
+    --borgonha-escuro: #7A0619;
+    --ouro:     #C4A35A;
+    --ouro-claro: #DFC38A;
+    --texto:    #2A1A1A;
+    --texto-mudo: #6B5B5B;
+    --branco:   #FFFFFF;
+    --verde-vinho: #2D5A27;
+    --verde-claro: #4A8C42;
+    --tinto-deep: #5C1A2E;
+    --branco-dourado: #F5EDD5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--creme);
+    font-family: 'EB Garamond', Georgia, serif;
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ========= BARRA DE TOPO ========= */
+  .top-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--borgonha);
+    height: 5px;
+  }
+
+  /* ========= HEADER ========= */
+  .site-header {
+    position: fixed; top: 5px; left: 0; right: 0; z-index: 99;
+    background: var(--creme);
+    border-bottom: 1px solid rgba(196,163,90,0.3);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+  }
+
+  .logo-area {
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .logo-icon {
+    width: 38px; height: 38px;
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--borgonha);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .logo-sub {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.65rem;
+    color: var(--ouro);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: -2px;
+  }
+
+  /* ========= NAV TABS ========= */
+  .main-nav {
+    display: flex; gap: 0;
+    border: 1px solid rgba(196,163,90,0.4);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 28px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texto-mudo);
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    border-right: 1px solid rgba(196,163,90,0.3);
+  }
+
+  .nav-btn:last-child { border-right: none; }
+
+  .nav-btn::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--ouro);
+    transform: scaleX(0);
+    transition: transform 0.35s ease;
+  }
+
+  .nav-btn.active {
+    background: var(--borgonha);
+    color: var(--ouro-claro);
+  }
+
+  .nav-btn.active::after { transform: scaleX(1); background: var(--ouro-claro); }
+  .nav-btn:not(.active):hover { background: rgba(196,163,90,0.08); color: var(--borgonha); }
+
+  /* ========= MAIN CONTENT ========= */
+  main { margin-top: 77px; }
+
+  .section { display: none; animation: fadeSlide 0.55s ease forwards; }
+  .section.active { display: block; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========= HERO PANELS ========= */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 480px;
+    display: flex; align-items: flex-end;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute; inset: 0;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 60px 80px;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--ouro);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: var(--branco);
+  }
+
+  .hero-desc {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 9px 22px;
+    border: 1px solid var(--ouro);
+    color: var(--ouro);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  /* VERDE */
+  .hero-verde .hero-bg { background: linear-gradient(160deg, #1a3d16 0%, #2D5A27 40%, #1a3d16 100%); }
+  .hero-verde .hero-overlay { background: linear-gradient(to top, rgba(26,61,22,0.92) 0%, rgba(26,61,22,0.3) 100%); }
+
+  /* TINTO */
+  .hero-tinto .hero-bg { background: linear-gradient(160deg, #3a0a1a 0%, #6B1528 40%, #3a0a1a 100%); }
+  .hero-tinto .hero-overlay { background: linear-gradient(to top, rgba(58,10,26,0.92) 0%, rgba(58,10,26,0.3) 100%); }
+
+  /* BRANCO */
+  .hero-branco .hero-bg { background: linear-gradient(160deg, #8B7340 0%, #C4A35A 50%, #8B7340 100%); }
+  .hero-branco .hero-overlay { background: linear-gradient(to top, rgba(60,45,10,0.9) 0%, rgba(60,45,10,0.25) 100%); }
+
+  /* ========= GLASS SVG ========= */
+  .hero-glass {
+    position: absolute; right: 9%; bottom: -20px; z-index: 2;
+    opacity: 0.22;
+    animation: floatGlass 6s ease-in-out infinite;
+  }
+
+  @keyframes floatGlass {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  /* ========= CONTEÚDO PRINCIPAL ========= */
+  .content-wrap {
+    max-width: 1200px; margin: 0 auto;
+    padding: 64px 48px;
+  }
+
+  /* ========= GRID CARACTERÍSTICAS ========= */
+  .section-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.7rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--ouro);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 36px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 60px;
+    height: 1px; background: var(--ouro-claro);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(196,163,90,0.15);
+    border: 1px solid rgba(196,163,90,0.2);
+    margin-bottom: 56px;
+  }
+
+  .card {
+    background: var(--branco);
+    padding: 36px 32px;
+    transition: background 0.3s ease;
+  }
+  .card:hover { background: #FFFAF7; }
+
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--borgonha);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .card-body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.0rem;
+    line-height: 1.7;
+    color: var(--texto-mudo);
+  }
+
+  /* ========= FAIXA DE ATRIBUTOS ========= */
+  .attr-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid rgba(196,163,90,0.2);
+    margin-bottom: 56px;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .attr-item {
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(196,163,90,0.2);
+    position: relative;
+  }
+  .attr-item:last-child { border-right: none; }
+
+  .attr-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .attr-value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--borgonha);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .attr-sub {
+    font-size: 0.78rem;
+    color: var(--texto-mudo);
+    font-style: italic;
+  }
+
+  /* Bar indicator */
+  .attr-bar {
+    width: 100%; height: 3px;
+    background: rgba(196,163,90,0.15);
+    margin-top: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .attr-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ouro), var(--borgonha));
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  /* ========= HARMONIZAÇÃO ========= */
+  .harmonize-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+
+  .harmonize-box {
+    border: 1px solid rgba(196,163,90,0.25);
+    padding: 36px;
+    background: var(--branco);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .harmonize-box::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--borgonha), var(--ouro));
+  }
+
+  .harmonize-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--borgonha);
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .food-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .food-list li {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.0rem;
+    color: var(--texto-mudo);
+    padding: 9px 14px;
+    border: 1px solid rgba(196,163,90,0.12);
+    border-radius: 1px;
+    transition: all 0.25s;
+  }
+
+  .food-list li:hover {
+    border-color: rgba(173,12,39,0.25);
+    background: rgba(250,247,245,0.8);
+    color: var(--texto);
+  }
+
+  .food-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--ouro); flex-shrink: 0;
+  }
+
+  /* ========= CURIOSIDADES ========= */
+  .curiosity-block {
+    background: var(--borgonha);
+    padding: 56px 64px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+
+  .curiosity-block::before {
+    content: '"';
+    position: absolute; top: -20px; left: 40px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+
+  .curiosity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative; z-index: 1;
+  }
+
+  .curiosity-item { border-left: 2px solid var(--ouro); padding-left: 24px; }
+
+  .curiosity-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--ouro);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .curiosity-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .curiosity-text {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.78);
+  }
+
+  /* ========= REGIÕES ========= */
+  .regioes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(196,163,90,0.15);
+    border: 1px solid rgba(196,163,90,0.2);
+    margin-bottom: 56px;
+  }
+
+  .regiao-card {
+    background: var(--creme);
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .regiao-card:hover { background: var(--branco); }
+
+  .regiao-flag {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .regiao-nome {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--borgonha);
+    margin-bottom: 4px;
+  }
+
+  .regiao-pais {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .regiao-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--texto-mudo);
+  }
+
+  /* ========= INTRO SECTION ========= */
+  .intro-hero {
+    background: var(--borgonha);
+    min-height: 520px;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 80px;
+  }
+
+  .intro-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(196,163,90,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(196,163,90,0.08) 0%, transparent 60%);
+  }
+
+  .intro-content { position: relative; z-index: 1; max-width: 650px; }
+
+  .intro-kicker {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .intro-kicker::before { content:''; width: 40px; height: 1px; background: var(--ouro); }
+
+  .intro-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 900;
+    color: var(--branco);
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  .intro-hero h1 em {
+    color: var(--ouro);
+    font-style: italic;
+  }
+
+  .intro-p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 36px;
+  }
+
+  .intro-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ouro);
+    color: var(--borgonha-escuro);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: none; cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 1px;
+  }
+
+  .btn-primary:hover { background: var(--ouro-claro); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent;
+    color: var(--ouro);
+    border: 1px solid var(--ouro);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 1px;
+  }
+
+  .btn-secondary:hover { background: rgba(196,163,90,0.1); }
+
+  /* ========= COMPARATIVO ========= */
+  .compare-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid rgba(196,163,90,0.2);
+    margin-bottom: 56px;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .compare-table thead tr {
+    background: var(--borgonha);
+  }
+
+  .compare-table th {
+    padding: 18px 24px;
+    text-align: left;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    font-weight: 500;
+    border-right: 1px solid rgba(196,163,90,0.15);
+  }
+
+  .compare-table th:last-child { border-right: none; }
+
+  .compare-table td {
+    padding: 16px 24px;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.98rem;
+    color: var(--texto-mudo);
+    border-right: 1px solid rgba(196,163,90,0.12);
+    border-bottom: 1px solid rgba(196,163,90,0.1);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .compare-table td:first-child {
+    color: var(--borgonha);
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    background: rgba(250,247,245,0.6);
+  }
+
+  .compare-table td:last-child { border-right: none; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tbody tr:hover td { background: rgba(196,163,90,0.04); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 1px;
+    font-size: 0.75rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.1em;
+    margin: 2px;
+  }
+
+  .tag-verde { background: rgba(45,90,39,0.12); color: var(--verde-vinho); border: 1px solid rgba(45,90,39,0.2); }
+  .tag-tinto { background: rgba(173,12,39,0.1); color: var(--borgonha); border: 1px solid rgba(173,12,39,0.2); }
+  .tag-branco { background: rgba(196,163,90,0.15); color: #7A5F20; border: 1px solid rgba(196,163,90,0.3); }
+
+  /* ========= DECORATIVE ========= */
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    margin: 48px 0 36px;
+    color: var(--ouro);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .divider::before, .divider::after {
+    content: ''; flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ouro-claro), transparent);
+  }
+
+  /* ========= FOOTER ========= */
+  footer {
+    background: var(--borgonha);
+    padding: 36px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 0;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ouro);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .footer-note {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* ========= GRAPE VARIETIES ========= */
+  .grape-row {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .grape-pill {
+    padding: 7px 18px;
+    border: 1px solid rgba(196,163,90,0.3);
+    border-radius: 100px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.88rem;
+    color: var(--texto-mudo);
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .grape-pill:hover {
+    border-color: var(--borgonha);
+    color: var(--borgonha);
+    background: rgba(173,12,39,0.04);
+  }
+
+  .grape-pill.highlight {
+    background: var(--borgonha);
+    color: var(--ouro);
+    border-color: var(--borgonha);
+  }
+
+  /* ========= TEMP GAUGE ========= */
+  .temp-display {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 20px;
+    background: rgba(196,163,90,0.08);
+    border: 1px solid rgba(196,163,90,0.25);
+    border-radius: 2px;
+  }
+
+  .temp-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--borgonha);
+  }
+
+  .temp-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ouro);
+  }
+
+  /* Decorative lines */
+  .gold-line { width: 48px; height: 2px; background: var(--ouro); margin-bottom: 24px; }
+
+  /* Intro wine cards */
+  .wine-cards-intro {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    display: flex; gap: 16px; align-items: center;
+  }
+
+  .wine-intro-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(196,163,90,0.25);
+    padding: 20px 16px;
+    text-align: center;
+    width: 110px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+
+  .wine-intro-card:hover {
+    background: rgba(196,163,90,0.12);
+    border-color: var(--ouro);
+    transform: translateY(-6px);
+  }
+
+  .wine-intro-card .w-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+  .wine-intro-card .w-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ouro);
+  }
+
+  @media (max-width: 900px) {
+    .wine-cards-intro { display: none; }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .attr-strip { grid-template-columns: repeat(3, 1fr); }
+    .regioes-grid { grid-template-columns: repeat(2, 1fr); }
+    .curiosity-grid { grid-template-columns: 1fr; }
+    .harmonize-grid { grid-template-columns: 1fr; }
+    .site-header { padding: 0 24px; }
+    .content-wrap { padding: 40px 24px; }
+    .hero-content { padding: 40px 32px; }
+    .intro-hero { padding: 48px 32px; }
+  }
+
+  @media (max-width: 600px) {
+    .cards-grid, .attr-strip { grid-template-columns: 1fr; }
+    .regioes-grid { grid-template-columns: 1fr 1fr; }
+    .main-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<header class="site-header">
+  <div class="logo-area">
+    <svg class="logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="19" r="18" stroke="#C4A35A" stroke-width="1"/>
+      <path d="M19 8 C14 12 12 17 14 21 C16 25 19 26 19 30 C19 26 22 25 24 21 C26 17 24 12 19 8Z" fill="#AD0C27"/>
+      <path d="M15 29 L23 29" stroke="#C4A35A" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M17 31 L21 31" stroke="#C4A35A" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <div class="logo-text">Zahil</div>
+      <span class="logo-sub">Vinhos Finos</span>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <button class="nav-btn active" onclick="showSection('intro')">Visão Geral</button>
+    <button class="nav-btn" onclick="showSection('verde')">Vinho Verde</button>
+    <button class="nav-btn" onclick="showSection('tinto')">Vinho Tinto</button>
+    <button class="nav-btn" onclick="showSection('branco')">Vinho Branco</button>
+    <button class="nav-btn" onclick="showSection('comparativo')">Comparativo</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===== VISÃO GERAL ===== -->
+<div id="intro" class="section active">
+
+  <div class="intro-hero">
+    <div class="intro-content">
+      <div class="intro-kicker">Zahil Vinhos — Guia de Estilos</div>
+      <h1>A arte de<br><em>entender o vinho</em></h1>
+      <p class="intro-p">
+        Cada estilo de vinho carrega uma identidade única — formada pelo solo, pelo clima, 
+        pela uva e pelo tempo. Explore as diferenças entre o Verde, o Tinto e o Branco.
+      </p>
+      <div class="intro-cta">
+        <button class="btn-primary" onclick="showSection('verde')">Explorar os Estilos →</button>
+        <button class="btn-secondary" onclick="showSection('comparativo')">Ver Comparativo</button>
+      </div>
+    </div>
+
+    <div class="wine-cards-intro">
+      <div class="wine-intro-card" onclick="showSection('verde')">
+        <span class="w-icon">🍃</span>
+        <div class="w-name">Verde</div>
+      </div>
+      <div class="wine-intro-card" onclick="showSection('tinto')">
+        <span class="w-icon">🍷</span>
+        <div class="w-name">Tinto</div>
+      </div>
+      <div class="wine-intro-card" onclick="showSection('branco')">
+        <span class="w-icon">🥂</span>
+        <div class="w-name">Branco</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+    <div class="section-label">O que diferencia cada estilo</div>
+
+    <div class="cards-grid" style="margin-bottom: 56px;">
+      <div class="card">
+        <span class="card-icon">🍇</span>
+        <div class="card-title">A Uva</div>
+        <div class="card-body">
+          A cor do vinho é definida principalmente pela presença ou ausência da casca da uva no processo de fermentação. Uvas tintas geram vinhos tintos; uvas brancas (ou tintas sem contato com a casca) produzem vinhos brancos.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌍</span>
+        <div class="card-title">O Terroir</div>
+        <div class="card-body">
+          O solo, o microclima e a altitude influenciam diretamente o perfil do vinho. Regiões frias tendem a produzir vinhos mais ácidos e leves; regiões quentes resultam em vinhos mais encorpados e alcoólicos.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚗️</span>
+        <div class="card-title">A Vinificação</div>
+        <div class="card-body">
+          O processo de produção define tanino, acidez, textura e aroma. A maceração, o tempo de fermentação e o uso de barrica de carvalho transformam a mesma uva em experiências completamente distintas.
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">Os três grandes estilos</div>
+
+    <div class="cards-grid">
+      <div class="card" style="border-top: 3px solid var(--verde-vinho); cursor:pointer;" onclick="showSection('verde')">
+        <span class="card-icon">🍃</span>
+        <div class="card-title" style="color: var(--verde-vinho);">Vinho Verde</div>
+        <div class="card-body">
+          Jovem, refrescante e naturalmente efervescente. Produzido no Noroeste de Portugal, é caracterizado pela alta acidez, baixo teor alcoólico e aromas de frutas cítricas e flores brancas. Ideal para o verão.
+        </div>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--borgonha); cursor:pointer;" onclick="showSection('tinto')">
+        <span class="card-icon">🍷</span>
+        <div class="card-title">Vinho Tinto</div>
+        <div class="card-body">
+          Complexo, encorpado e com personalidade marcante. Os taninos conferem estrutura e longevidade. Do elegante Pinot Noir ao poderoso Cabernet Sauvignon, o tinto é o estilo de maior diversidade expressiva.
+        </div>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--ouro); cursor:pointer;" onclick="showSection('branco')">
+        <span class="card-icon">🥂</span>
+        <div class="card-title" style="color: #7A5F20;">Vinho Branco</div>
+        <div class="card-body">
+          Versátil e aromático, vai do seco ao doce, do leve ao encorpado. Fermentado sem as cascas, preserva a frescura natural da uva. Chardonnay e Sauvignon Blanc são os embaixadores mundiais do estilo.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Zahil Vinhos</div>
+    <div class="footer-note">Guia Educativo de Estilos · Material Interno</div>
+  </footer>
+</div>
+
+<!-- ===== VINHO VERDE ===== -->
+<div id="verde" class="section">
+  <div class="hero hero-verde">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Módulo 01</div>
+      <h1>Vinho Verde</h1>
+      <p class="hero-desc">
+        A expressão mais jovem e vibrante da viticultura portuguesa. 
+        Frescor, borbulhas naturais e um terroir atlântico único.
+      </p>
+      <div class="hero-badge">Região Vinho Verde · Portugal · DOP</div>
+    </div>
+    <svg class="hero-glass" width="260" height="420" viewBox="0 0 260 420">
+      <ellipse cx="130" cy="380" rx="80" ry="18" fill="rgba(255,255,255,0.15)"/>
+      <path d="M90 380 L100 340 L80 200 Q70 130 130 90 Q190 130 180 200 L160 340 L170 380Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+      <path d="M115 340 L145 340 L150 380 L110 380Z" fill="rgba(255,255,255,0.05)"/>
+      <path d="M85 210 Q130 235 175 210" stroke="rgba(196,163,90,0.4)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="content-wrap">
+    <div class="section-label">Perfil Sensorial</div>
+
+    <div class="attr-strip">
+      <div class="attr-item">
+        <span class="attr-label">Acidez</span>
+        <span class="attr-value">Alta</span>
+        <span class="attr-sub">Vibrante</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 88%; background: linear-gradient(90deg, var(--verde-vinho), var(--verde-claro));"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Álcool</span>
+        <span class="attr-value">8–11%</span>
+        <span class="attr-sub">Leve</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 30%; background: linear-gradient(90deg, var(--verde-vinho), var(--verde-claro));"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Tanino</span>
+        <span class="attr-value">Ausente</span>
+        <span class="attr-sub">Nenhum</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 5%; background: linear-gradient(90deg, var(--verde-vinho), var(--verde-claro));"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Corpo</span>
+        <span class="attr-value">Leve</span>
+        <span class="attr-sub">Delicado</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 25%; background: linear-gradient(90deg, var(--verde-vinho), var(--verde-claro));"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Serviço</span>
+        <span class="attr-value">7–10°C</span>
+        <span class="attr-sub">Bem gelado</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 18%; background: linear-gradient(90deg, var(--verde-vinho), var(--verde-claro));"></div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Características e Identidade</div>
+
+    <div class="cards-grid" style="margin-bottom: 40px;">
+      <div class="card">
+        <span class="card-icon">🫧</span>
+        <div class="card-title" style="color: var(--verde-vinho);">Perlage Natural</div>
+        <div class="card-body">
+          A leve efervescência do vinho verde é resultado do dióxido de carbono retido durante o engarrafamento. Não é um espumante, mas possui uma borbulha discreta e refrescante que é sua marca registrada.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌊</span>
+        <div class="card-title" style="color: var(--verde-vinho);">Terroir Atlântico</div>
+        <div class="card-body">
+          A região Vinho Verde, no noroeste de Portugal (Minho), é fortemente influenciada pelo Oceano Atlântico. Chuvas abundantes, granito no solo e verões amenos criam uvas de alta acidez e baixo açúcar.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <div class="card-title" style="color: var(--verde-vinho);">O Nome "Verde"</div>
+        <div class="card-body">
+          "Verde" não se refere à cor, mas à juventude do vinho. É produzido para ser consumido jovem, logo após a colheita. Existe também vinho verde tinto e rosé, além do branco — o mais famoso internacionalmente.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Principais Uvas</div>
+    <div class="grape-row">
+      <span class="grape-pill highlight">Alvarinho</span>
+      <span class="grape-pill highlight">Loureiro</span>
+      <span class="grape-pill">Arinto</span>
+      <span class="grape-pill">Avesso</span>
+      <span class="grape-pill">Trajadura</span>
+      <span class="grape-pill">Azal</span>
+      <span class="grape-pill">Vinhão (tinto)</span>
+      <span class="grape-pill">Borraçal (tinto)</span>
+    </div>
+
+    <div class="harmonize-grid">
+      <div class="harmonize-box">
+        <div class="harmonize-title">🍽️ Harmonização Ideal</div>
+        <ul class="food-list">
+          <li><span class="food-dot" style="background:var(--verde-vinho);"></span>Frutos do mar e mariscos</li>
+          <li><span class="food-dot" style="background:var(--verde-vinho);"></span>Sushi e sashimi</li>
+          <li><span class="food-dot" style="background:var(--verde-vinho);"></span>Queijos frescos e ricota</li>
+          <li><span class="food-dot" style="background:var(--verde-vinho);"></span>Saladas com molhos cítricos</li>
+          <li><span class="food-dot" style="background:var(--verde-vinho);"></span>Peixe grelhado e bacalhau leve</li>
+          <li><span class="food-dot" style="background:var(--verde-vinho);"></span>Petiscos portugueses tradicionais</li>
+        </ul>
+      </div>
+      <div class="harmonize-box">
+        <div class="harmonize-title">❌ Evitar Combinar Com</div>
+        <ul class="food-list">
+          <li><span class="food-dot" style="background:#ef4444;"></span>Carnes vermelhas e assados pesados</li>
+          <li><span class="food-dot" style="background:#ef4444;"></span>Queijos curados e defumados</li>
+          <li><span class="food-dot" style="background:#ef4444;"></span>Molhos encorpados à base de creme</li>
+          <li><span class="food-dot" style="background:#ef4444;"></span>Pratos muito apimentados</li>
+          <li><span class="food-dot" style="background:#ef4444;"></span>Sobremesas muito doces</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="curiosity-block">
+      <div class="curiosity-grid">
+        <div class="curiosity-item">
+          <div class="curiosity-num">2ª</div>
+          <span class="curiosity-label">Maior DOP de Portugal</span>
+          <p class="curiosity-text">A região Vinho Verde é a maior denominação de origem protegida de Portugal, cobrindo mais de 21.000 hectares de vinhedos no Noroeste do país.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">40%</div>
+          <span class="curiosity-label">Da produção exportada</span>
+          <p class="curiosity-text">Cerca de 40% de toda produção de Vinho Verde é exportada, sendo os EUA, Brasil e Reino Unido os principais mercados consumidores.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">1908</div>
+          <span class="curiosity-label">Denominação de Origem</span>
+          <p class="curiosity-text">O Vinho Verde foi uma das primeiras denominações de origem criadas no mundo, regulamentada ainda em 1908, pioneirismo que poucos países alcançaram.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Principais Sub-regiões</div>
+    <div class="regioes-grid">
+      <div class="regiao-card">
+        <span class="regiao-flag">📍</span>
+        <div class="regiao-nome">Monção e Melgaço</div>
+        <span class="regiao-pais">Portugal · Minho</span>
+        <p class="regiao-desc">Berço do Alvarinho premium. Microclima mais seco e quente produz vinhos mais estruturados e aromáticos.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">📍</span>
+        <div class="regiao-nome">Lima</div>
+        <span class="regiao-pais">Portugal · Minho</span>
+        <p class="regiao-desc">Sub-região do Loureiro. Vinhos elegantes, florais e cítricos, com acidez vibrante e frescor atlântico.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">📍</span>
+        <div class="regiao-nome">Basto</div>
+        <span class="regiao-pais">Portugal · Minho</span>
+        <p class="regiao-desc">Interior e continental. Produz vinhos de Azal com acidez pronunciada e certa mineralidade granítica.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">📍</span>
+        <div class="regiao-nome">Baião</div>
+        <span class="regiao-pais">Portugal · Douro Litoral</span>
+        <p class="regiao-desc">Avesso é a uva rainha. Vinhos com mais corpo, textura e longevidade dentro do estilo Vinho Verde.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Zahil Vinhos</div>
+    <div class="footer-note">Módulo 01 — Vinho Verde · Guia de Estilos</div>
+  </footer>
+</div>
+
+<!-- ===== VINHO TINTO ===== -->
+<div id="tinto" class="section">
+  <div class="hero hero-tinto">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Módulo 02</div>
+      <h1>Vinho Tinto</h1>
+      <p class="hero-desc">
+        Da elegância sedosa à potência tânica. O vinho tinto é a mais complexa 
+        expressão da vinicultura mundial — estruturado para durar décadas.
+      </p>
+      <div class="hero-badge">Estilos Leve · Médio · Encorpado</div>
+    </div>
+    <svg class="hero-glass" width="260" height="420" viewBox="0 0 260 420">
+      <ellipse cx="130" cy="380" rx="80" ry="18" fill="rgba(255,255,255,0.1)"/>
+      <path d="M90 380 L100 340 L80 200 Q70 130 130 90 Q190 130 180 200 L160 340 L170 380Z" fill="rgba(173,12,39,0.25)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <path d="M115 340 L145 340 L150 380 L110 380Z" fill="rgba(173,12,39,0.15)"/>
+      <ellipse cx="130" cy="200" rx="46" ry="28" fill="rgba(173,12,39,0.4)"/>
+    </svg>
+  </div>
+
+  <div class="content-wrap">
+    <div class="section-label">Perfil Sensorial</div>
+
+    <div class="attr-strip">
+      <div class="attr-item">
+        <span class="attr-label">Tanino</span>
+        <span class="attr-value">Médio-Alto</span>
+        <span class="attr-sub">Estrutura</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 75%;"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Acidez</span>
+        <span class="attr-value">Média</span>
+        <span class="attr-sub">Varia por uva</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 55%;"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Álcool</span>
+        <span class="attr-value">12–15%</span>
+        <span class="attr-sub">Médio-Alto</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 70%;"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Corpo</span>
+        <span class="attr-value">Médio-Pleno</span>
+        <span class="attr-sub">Encorpado</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 80%;"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Serviço</span>
+        <span class="attr-value">16–18°C</span>
+        <span class="attr-sub">Temp. ambiente</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 60%;"></div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Características e Identidade</div>
+
+    <div class="cards-grid" style="margin-bottom: 40px;">
+      <div class="card">
+        <span class="card-icon">🔴</span>
+        <div class="card-title">Cor e Maceração</div>
+        <div class="card-body">
+          A cor vermelha vem da antocianina presente nas cascas das uvas tintas. Durante a maceração, as cascas permanecem em contato com o mosto, extraindo cor, tanino e compostos aromáticos. Quanto mais longa a maceração, mais intenso o vinho.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🪵</span>
+        <div class="card-title">Barrica de Carvalho</div>
+        <div class="card-body">
+          Muitos vinhos tintos envelhecem em barrica de carvalho, que adiciona notas de baunilha, especiarias, tostado e cedro. O carvalho também permite micro-oxigenação, suavizando os taninos e aumentando a complexidade do vinho.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⏳</span>
+        <div class="card-title">Longevidade</div>
+        <div class="card-body">
+          O tanino age como conservante natural. Grandes vinhos tintos — como Barolo, Bordeaux e Barca Velha — podem envelhecer por décadas, desenvolvendo aromas terciários de couro, tabaco, trufas e terra molhada.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Principais Uvas Internacionais</div>
+    <div class="grape-row">
+      <span class="grape-pill highlight">Cabernet Sauvignon</span>
+      <span class="grape-pill highlight">Merlot</span>
+      <span class="grape-pill highlight">Pinot Noir</span>
+      <span class="grape-pill">Syrah / Shiraz</span>
+      <span class="grape-pill">Nebbiolo</span>
+      <span class="grape-pill">Sangiovese</span>
+      <span class="grape-pill">Touriga Nacional</span>
+      <span class="grape-pill">Tempranillo</span>
+      <span class="grape-pill">Malbec</span>
+      <span class="grape-pill">Grenache</span>
+    </div>
+
+    <div class="harmonize-grid">
+      <div class="harmonize-box">
+        <div class="harmonize-title">🍽️ Harmonização Ideal</div>
+        <ul class="food-list">
+          <li><span class="food-dot"></span>Carnes vermelhas grelhadas e assadas</li>
+          <li><span class="food-dot"></span>Cordeiro e caça (perdiz, javali)</li>
+          <li><span class="food-dot"></span>Queijos curados e semiduros</li>
+          <li><span class="food-dot"></span>Massas com molho de carne (Bolonhesa)</li>
+          <li><span class="food-dot"></span>Funghi, trufas e pratos terrosos</li>
+          <li><span class="food-dot"></span>Chocolate amargo (para tintos maduros)</li>
+        </ul>
+      </div>
+      <div class="harmonize-box">
+        <div class="harmonize-title">🌡️ Espectro de Estilos</div>
+        <ul class="food-list">
+          <li><span class="food-dot" style="background:rgba(173,12,39,0.3);"></span><strong>Leve:</strong> Pinot Noir, Gamay — frutas vermelhas, delicado</li>
+          <li><span class="food-dot" style="background:rgba(173,12,39,0.6);"></span><strong>Médio:</strong> Merlot, Sangiovese — equilibrado, versátil</li>
+          <li><span class="food-dot" style="background:rgba(173,12,39,0.9);"></span><strong>Encorpado:</strong> Cabernet, Barolo — tanino poderoso</li>
+          <li><span class="food-dot" style="background:var(--borgonha);"></span><strong>Longevo:</strong> Barca Velha, Penfolds — décadas de vida</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="curiosity-block">
+      <div class="curiosity-grid">
+        <div class="curiosity-item">
+          <div class="curiosity-num">60%</div>
+          <span class="curiosity-label">Da produção mundial</span>
+          <p class="curiosity-text">Aproximadamente 60% de todo o vinho produzido no mundo é tinto. França, Itália, Espanha e Portugal lideram a produção dos estilos mais valorizados do mercado.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">50+</div>
+          <span class="curiosity-label">Anos de envelhecimento</span>
+          <p class="curiosity-text">Grandes Barolos, Bordeaux e vinhos do Douro podem envelhecer mais de 50 anos em condições ideais de adega, transformando completamente seu perfil aromático.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">↑ 2x</div>
+          <span class="curiosity-label">Resveratrol vs branco</span>
+          <p class="curiosity-text">O vinho tinto contém o dobro de resveratrol em comparação ao branco, graças à maceração com as cascas — onde este composto antioxidante é encontrado em maior concentração.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Grandes Regiões Produtoras</div>
+    <div class="regioes-grid">
+      <div class="regiao-card">
+        <span class="regiao-flag">🇫🇷</span>
+        <div class="regiao-nome">Bordeaux</div>
+        <span class="regiao-pais">França</span>
+        <p class="regiao-desc">Blends de Cabernet Sauvignon e Merlot. Berço dos grands crus e dos vinhos de maior longevidade do mundo.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">🇮🇹</span>
+        <div class="regiao-nome">Piemonte</div>
+        <span class="regiao-pais">Itália</span>
+        <p class="regiao-desc">Terra do Barolo e Barbaresco, feitos de Nebbiolo. Taninos firmes, acidez alta e envelhecimento longo.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">🇵🇹</span>
+        <div class="regiao-nome">Douro</div>
+        <span class="regiao-pais">Portugal</span>
+        <p class="regiao-desc">Touriga Nacional, Touriga Franca e Tinta Roriz. O Douro produz vinhos de intensidade única e personalidade ibérica inconfundível.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">🇦🇷</span>
+        <div class="regiao-nome">Mendoza</div>
+        <span class="regiao-pais">Argentina</span>
+        <p class="regiao-desc">Capital mundial do Malbec. A altitude dos Andes (900–1.500m) confere intensidade de cor e frescor inesperado.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Zahil Vinhos</div>
+    <div class="footer-note">Módulo 02 — Vinho Tinto · Guia de Estilos</div>
+  </footer>
+</div>
+
+<!-- ===== VINHO BRANCO ===== -->
+<div id="branco" class="section">
+  <div class="hero hero-branco">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Módulo 03</div>
+      <h1>Vinho Branco</h1>
+      <p class="hero-desc">
+        Do refrescante e cítrico ao rico e amanteigado. 
+        O vinho branco é a suprema expressão da elegância e da versatilidade.
+      </p>
+      <div class="hero-badge">Do Seco Mineral ao Doce Nobre</div>
+    </div>
+    <svg class="hero-glass" width="260" height="420" viewBox="0 0 260 420">
+      <ellipse cx="130" cy="380" rx="80" ry="18" fill="rgba(255,255,255,0.1)"/>
+      <path d="M90 380 L100 340 L80 200 Q70 130 130 90 Q190 130 180 200 L160 340 L170 380Z" fill="rgba(245,237,213,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <path d="M115 340 L145 340 L150 380 L110 380Z" fill="rgba(245,237,213,0.1)"/>
+      <ellipse cx="130" cy="195" rx="46" ry="28" fill="rgba(245,237,213,0.3)"/>
+    </svg>
+  </div>
+
+  <div class="content-wrap">
+    <div class="section-label">Perfil Sensorial</div>
+
+    <div class="attr-strip">
+      <div class="attr-item">
+        <span class="attr-label">Acidez</span>
+        <span class="attr-value">Média-Alta</span>
+        <span class="attr-sub">Frescura</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 72%; background: linear-gradient(90deg, var(--ouro), #DFC38A);"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Tanino</span>
+        <span class="attr-value">Quase Zero</span>
+        <span class="attr-sub">Suave</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 8%; background: linear-gradient(90deg, var(--ouro), #DFC38A);"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Álcool</span>
+        <span class="attr-value">11–14%</span>
+        <span class="attr-sub">Variável</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 55%; background: linear-gradient(90deg, var(--ouro), #DFC38A);"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Corpo</span>
+        <span class="attr-value">Leve-Médio</span>
+        <span class="attr-sub">Versátil</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 45%; background: linear-gradient(90deg, var(--ouro), #DFC38A);"></div></div>
+      </div>
+      <div class="attr-item">
+        <span class="attr-label">Serviço</span>
+        <span class="attr-value">8–12°C</span>
+        <span class="attr-sub">Bem gelado</span>
+        <div class="attr-bar"><div class="attr-fill" style="width: 22%; background: linear-gradient(90deg, var(--ouro), #DFC38A);"></div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Características e Identidade</div>
+
+    <div class="cards-grid" style="margin-bottom: 40px;">
+      <div class="card">
+        <span class="card-icon">🌾</span>
+        <div class="card-title" style="color:#7A5F20;">Fermentação Sem Cascas</div>
+        <div class="card-body">
+          O vinho branco é fermentado sem as cascas da uva — seja de uva branca, ou de uva tinta (neste caso chamado "blanc de noirs"). A ausência das cascas elimina taninos e preserva a acidez e aromas primários da fruta.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🍯</span>
+        <div class="card-title" style="color:#7A5F20;">Chardonnay e Barrica</div>
+        <div class="card-body">
+          O Chardonnay vinificado em barrica de carvalho desenvolve notas de manteiga, baunilha e tostado. Já sem barrica, é cítrico e mineral. A escolha vinícola transforma completamente a identidade da mesma uva.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🍬</span>
+        <div class="card-title" style="color:#7A5F20;">Do Seco ao Doce</div>
+        <div class="card-body">
+          O vinho branco é o mais versátil em termos de dulçor: vai do radicalmente seco (Muscadet, Chablis) ao intensamente doce (Sauternes, Tokaji). A colheita tardia e a botrytis nobre criam os grandes vinhos doces do mundo.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Principais Uvas Internacionais</div>
+    <div class="grape-row">
+      <span class="grape-pill highlight">Chardonnay</span>
+      <span class="grape-pill highlight">Sauvignon Blanc</span>
+      <span class="grape-pill highlight">Riesling</span>
+      <span class="grape-pill">Pinot Gris</span>
+      <span class="grape-pill">Gewurztraminer</span>
+      <span class="grape-pill">Viognier</span>
+      <span class="grape-pill">Alvarinho</span>
+      <span class="grape-pill">Antão Vaz</span>
+      <span class="grape-pill">Encruzado</span>
+    </div>
+
+    <div class="harmonize-grid">
+      <div class="harmonize-box">
+        <div class="harmonize-title">🍽️ Harmonização Ideal</div>
+        <ul class="food-list">
+          <li><span class="food-dot" style="background:var(--ouro);"></span>Frutos do mar e ostras</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span>Peixes grelhados e crus</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span>Queijos frescos e de pasta mole</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span>Risoto de funghi e massas leves</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span>Aves grelhadas e vitela</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span>Foie gras (brancos doces)</li>
+        </ul>
+      </div>
+      <div class="harmonize-box">
+        <div class="harmonize-title">🌍 Estilos por Região</div>
+        <ul class="food-list">
+          <li><span class="food-dot" style="background:var(--ouro);"></span><strong>Chablis:</strong> Mineral, calcário, muito seco</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span><strong>Borgonha:</strong> Chardonnay rico, amanteigado</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span><strong>Loire:</strong> Sauvignon Blanc herbáceo, vivo</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span><strong>Alsácia:</strong> Riesling aromático, complexo</li>
+          <li><span class="food-dot" style="background:var(--ouro);"></span><strong>Dão (PT):</strong> Encruzado floral e estruturado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="curiosity-block">
+      <div class="curiosity-grid">
+        <div class="curiosity-item">
+          <div class="curiosity-num">1855</div>
+          <span class="curiosity-label">Classificação de Sauternes</span>
+          <p class="curiosity-text">O Château d'Yquem, produzido em Sauternes com uvas atacadas pela botrytis nobre, é o único vinho branco que recebeu a classificação Premier Cru Supérieur na famosa classificação de 1855.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">10.000</div>
+          <span class="curiosity-label">Uvas por garrafa</span>
+          <p class="curiosity-text">Sauternes e outros vinhos doces de colheita tardia requerem até 10.000 uvas murchas e atacadas por fungo para produzir uma única garrafa de 375ml — daí seu preço elevado.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">3–5°</div>
+          <span class="curiosity-label">Cuidado com o frio</span>
+          <p class="curiosity-text">Muitas pessoas erram ao servir o vinho branco frio demais. Abaixo de 7°C, os aromas ficam suprimidos. O ideal é tirar da geladeira 15 minutos antes de servir para revelar toda a expressão aromática.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Grandes Regiões Produtoras</div>
+    <div class="regioes-grid">
+      <div class="regiao-card">
+        <span class="regiao-flag">🇫🇷</span>
+        <div class="regiao-nome">Borgonha</div>
+        <span class="regiao-pais">França</span>
+        <p class="regiao-desc">Chardonnay elevado ao máximo. Chablis mineral, Meursault amanteigado e Montrachet — referência absoluta do branco mundial.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">🇩🇪</span>
+        <div class="regiao-nome">Mosel</div>
+        <span class="regiao-pais">Alemanha</span>
+        <p class="regiao-desc">Rieslings delicados com acidez cristalina, pouco álcool e mineralidade xistosa. Vinhos longevos de extraordinária elegância.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">🇳🇿</span>
+        <div class="regiao-nome">Marlborough</div>
+        <span class="regiao-pais">Nova Zelândia</span>
+        <p class="regiao-desc">Capital mundial do Sauvignon Blanc. Aromas explosivos de maracujá, groselha e capim-limão com acidez vibrante e final mineral.</p>
+      </div>
+      <div class="regiao-card">
+        <span class="regiao-flag">🇵🇹</span>
+        <div class="regiao-nome">Dão e Alentejo</div>
+        <span class="regiao-pais">Portugal</span>
+        <p class="regiao-desc">Encruzado (Dão) e Antão Vaz (Alentejo) produzem brancos de alto potencial: florais, estruturados e com ótima relação qualidade-preço.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Zahil Vinhos</div>
+    <div class="footer-note">Módulo 03 — Vinho Branco · Guia de Estilos</div>
+  </footer>
+</div>
+
+<!-- ===== COMPARATIVO ===== -->
+<div id="comparativo" class="section">
+  <div style="background: var(--borgonha); padding: 64px 80px; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 50%, rgba(196,163,90,0.1) 0%, transparent 70%);"></div>
+    <div style="position:relative;z-index:1;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;display:flex;align-items:center;gap:14px;"><span style="display:inline-block;width:40px;height:1px;background:var(--ouro);"></span>Módulo Final</div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;color:var(--branco);line-height:1.08;margin-bottom:16px;">Comparativo<br><em style="color:var(--ouro);font-style:italic;">dos Três Estilos</em></h1>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:rgba(255,255,255,0.7);max-width:520px;line-height:1.6;">Entenda as diferenças e similaridades entre o Verde, o Tinto e o Branco em uma visão consolidada.</p>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+
+    <div class="section-label">Tabela Comparativa Completa</div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Atributo</th>
+          <th><span class="tag tag-verde">🍃 Vinho Verde</span></th>
+          <th><span class="tag tag-tinto">🍷 Vinho Tinto</span></th>
+          <th><span class="tag tag-branco">🥂 Vinho Branco</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cor</td>
+          <td>Amarelo-esverdeado pálido a dourado</td>
+          <td>Rubi, granada, violeta a castanho-âmbar</td>
+          <td>Amarelo-palha, dourado a âmbar profundo</td>
+        </tr>
+        <tr>
+          <td>Temperatura de Serviço</td>
+          <td>7 a 10°C</td>
+          <td>16 a 18°C (leves: 12–14°C)</td>
+          <td>8 a 12°C</td>
+        </tr>
+        <tr>
+          <td>Álcool</td>
+          <td>8 a 11% vol.</td>
+          <td>12 a 15% vol.</td>
+          <td>11 a 14% vol.</td>
+        </tr>
+        <tr>
+          <td>Tanino</td>
+          <td>Ausente</td>
+          <td>Médio a muito alto</td>
+          <td>Quase ausente</td>
+        </tr>
+        <tr>
+          <td>Acidez</td>
+          <td>Alta — característica central</td>
+          <td>Média — varia pela uva e região</td>
+          <td>Média a alta — preserva frescor</td>
+        </tr>
+        <tr>
+          <td>Efervescência</td>
+          <td>Perlage natural discreta</td>
+          <td>Nenhuma</td>
+          <td>Nenhuma (exceto espumantes)</td>
+        </tr>
+        <tr>
+          <td>Aromas Típicos</td>
+          <td>Limão, maçã verde, flores brancas, hortelã</td>
+          <td>Frutas vermelhas, ameixa, especiarias, terra, tabaco</td>
+          <td>Pêssego, maracujá, mel, baunilha, mineral</td>
+        </tr>
+        <tr>
+          <td>Potencial de Guarda</td>
+          <td>1 a 3 anos (consumir jovem)</td>
+          <td>3 a 50+ anos (grandes vinhos)</td>
+          <td>2 a 20+ anos (depende do estilo)</td>
+        </tr>
+        <tr>
+          <td>Uso de Barrica</td>
+          <td>Raro (apenas estilos premium)</td>
+          <td>Comum — francesa ou americana</td>
+          <td>Opcional — define o estilo do vinho</td>
+        </tr>
+        <tr>
+          <td>Origem Principal</td>
+          <td>Portugal (Minho)</td>
+          <td>França, Itália, Portugal, Espanha, Argentina</td>
+          <td>França, Alemanha, Portugal, Nova Zelândia</td>
+        </tr>
+        <tr>
+          <td>Harmonização Clássica</td>
+          <td>Frutos do mar, sushi, petiscos leves</td>
+          <td>Carnes, queijos curados, pratos terrosos</td>
+          <td>Peixes, aves, queijos frescos, frutos do mar</td>
+        </tr>
+        <tr>
+          <td>Perfil do Consumidor</td>
+          <td>Aprecia frescor, refrescância, momentos casuais</td>
+          <td>Aprecia complexidade, estrutura, gastronomia</td>
+          <td>Aprecia elegância, versatilidade, leveza</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider">Resumo Visual de Atributos</div>
+
+    <div class="cards-grid" style="margin-bottom: 56px;">
+      <div class="card" style="border-top: 3px solid var(--verde-vinho);">
+        <div class="gold-line" style="background:var(--verde-vinho);"></div>
+        <div class="card-title" style="color:var(--verde-vinho);">Escolha o Verde quando...</div>
+        <div class="card-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li>🌞 É verão e você quer algo refrescante</li>
+            <li>🦀 O jantar é frutos do mar ou sushi</li>
+            <li>🎉 O momento é descontraído e leve</li>
+            <li>🍹 Prefere baixo teor alcoólico</li>
+            <li>🇵🇹 Quer explorar Portugal de forma acessível</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--borgonha);">
+        <div class="gold-line"></div>
+        <div class="card-title">Escolha o Tinto quando...</div>
+        <div class="card-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li>🥩 O prato principal é carne vermelha</li>
+            <li>🧀 Há queijos curados na mesa</li>
+            <li>🕯️ O momento pede complexidade e profundidade</li>
+            <li>⏳ Você quer investir em guarda</li>
+            <li>🍂 A estação é outono ou inverno</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--ouro);">
+        <div class="gold-line" style="background:var(--ouro);"></div>
+        <div class="card-title" style="color:#7A5F20;">Escolha o Branco quando...</div>
+        <div class="card-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li>🐟 O prato é peixe, aves ou frutos do mar</li>
+            <li>🧀 Há queijos frescos ou brie</li>
+            <li>🌸 Quer aromas florais e frutados</li>
+            <li>🍽️ Prefere maior versatilidade gastronômica</li>
+            <li>✨ A ocasião é elegante mas leve</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="curiosity-block">
+      <div class="curiosity-grid">
+        <div class="curiosity-item">
+          <div class="curiosity-num">🔑</div>
+          <span class="curiosity-label">Regra de ouro</span>
+          <p class="curiosity-text">O tanino é o grande diferenciador: o tinto tem, o verde e o branco quase não têm. O tanino define a estrutura, a longevidade e a capacidade de harmonizar com proteínas animais.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">🌡️</div>
+          <span class="curiosity-label">Temperatura importa</span>
+          <p class="curiosity-text">Servir o tinto quente demais realça o álcool e achata os aromas. Servir o branco frio demais bloqueia o bouquet. A temperatura certa é o primeiro passo para apreciar qualquer vinho.</p>
+        </div>
+        <div class="curiosity-item">
+          <div class="curiosity-num">🍽️</div>
+          <span class="curiosity-label">Harmonização intuitiva</span>
+          <p class="curiosity-text">A regra simples: acidez combina com acidez (vinho verde + limonadas/cítricas), tanino combina com gordura/proteína (tinto + carne), e leveza combina com leveza (branco + peixe).</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-brand">Zahil Vinhos</div>
+    <div class="footer-note">Comparativo Completo · Guia de Estilos 2025</div>
+  </footer>
+</div>
+
+</main>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map = { intro: 0, verde: 1, tinto: 2, branco: 3, comparativo: 4 };
+  document.querySelectorAll('.nav-btn')[map[id]].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Animate bars on load
+function animateBars() {
+  document.querySelectorAll('.attr-fill').forEach(el => {
+    const w = el.style.width;
+    el.style.width = '0';
+    setTimeout(() => { el.style.width = w; }, 100);
+  });
+}
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => setTimeout(animateBars, 300));
+});
+setTimeout(animateBars, 300);
+</script>
+</body>
+</html>
